@@ -1,0 +1,40 @@
+{
+  "name": "serverless-api-gateway-authorizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug": "SET SLS_DEBUG=* && node --inspect node_modules\\serverless\\bin\\serverless.js offline -s dev",
+    "deploy": "serverless deploy",
+    "package": "serverless package",
+    "start": "serverless offline start -r us-east-1 --noTimeout",
+    "swagger": "ts-node swagger/index.ts",
+    "swagger:generate": "serverless openapi generate -f json -o swagger/openapi/swagger.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexSergey/serverless-api-gateway-authorizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexSergey/serverless-api-gateway-authorizer/issues"
+  },
+  "homepage": "https://github.com/AlexSergey/serverless-api-gateway-authorizer#readme",
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "@middy/http-json-body-parser": "^3.6.2",
+    "@middy/core": "^3.6.2",
+    "@middy/http-error-handler": "^3.6.2",
+    "@middy/validator": "^3.6.2",
+    "@middy/http-response-serializer": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.103",
+    "serverless": "^3.19.0",
+    "serverless-dotenv-plugin": "^4.0.1",
+    "serverless-offline": "^11.1.2",
+    "serverless-plugin-typescript": "^2.1.2"
+  }
+}

@@ -1,0 +1,12 @@
+### Send POST request with json body
+POST http://localhost:3000/dev/process-payment
+Content-Type: application/json
+
+{
+    "creditCardNumber": "123456789012",
+    "expiryMonth": 1,
+    "expiryYear": 2021,
+    "cvc": "123",
+    "nameOnCard": "Alex",
+    "amount": 1
+}

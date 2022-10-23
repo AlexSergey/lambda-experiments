@@ -1,0 +1,24 @@
+service: hello-world-service
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+custom:
+  serverless-offline:
+    reloadHandler: true
+
+functions:
+  process-payment:
+    handler: src/functions/process-payment/index.handler
+    events:
+      - http:
+          path: process-payment
+          method: POST
