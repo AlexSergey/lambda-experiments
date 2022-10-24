@@ -14,9 +14,5 @@
   "license": "ISC",
   "dependencies": {
     "uuid": "^9.0.0"
-  },
-  "devDependencies": {
-    "serverless-deployment-bucket": "^1.6.0",
-    "serverless-layers": "2.5.3"
   }
 }

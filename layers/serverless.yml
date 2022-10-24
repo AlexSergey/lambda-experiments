@@ -2,16 +2,6 @@ service: uuid
 
 frameworkVersion: '3'
 
-plugins:
-  - serverless-layers
-  - serverless-deployment-bucket
-
-
-custom:
-  serverless-layers:
-    layersDeploymentBucket: uuid-bucket
-    dependenciesPath: ./package.json
-
 provider:
   name: aws
   runtime: nodejs16.x
@@ -19,3 +9,10 @@ provider:
 functions:
   uuid:
     handler: handler.uuid
+    layers:
+      - { Ref: UuidLambdaLayer }
+
+layers:
+  uuid:
+    path: ./
+    description: "UUID Dependencies"
