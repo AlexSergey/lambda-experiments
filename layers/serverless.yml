@@ -2,6 +2,13 @@ service: uuid
 
 frameworkVersion: '3'
 
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    reloadHandler: true
+
 provider:
   name: aws
   runtime: nodejs16.x
@@ -9,6 +16,10 @@ provider:
 functions:
   uuid:
     handler: handler.uuid
+    events:
+      - http:
+          path: uuid
+          method: get
     layers:
       - { Ref: UuidLambdaLayer }
 
