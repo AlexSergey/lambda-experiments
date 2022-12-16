@@ -12,6 +12,8 @@ custom:
 provider:
   name: aws
   runtime: nodejs16.x
+  environment:
+    NODE_OPTIONS: "--enable-source-maps"
 
 functions:
   uuid:
