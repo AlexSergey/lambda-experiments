@@ -3,6 +3,8 @@ import jsonBodyParser from '@middy/http-json-body-parser';
 import httpErrorHandler from '@middy/http-error-handler';
 import validator from '@middy/validator';
 import httpResponseSerializer from '@middy/http-response-serializer';
+import { transpileSchema } from '@middy/validator/transpile';
+import cors from '@middy/http-cors';
 
 const processPayment = async (event, context) => {
   const {
@@ -22,7 +24,7 @@ const processPayment = async (event, context) => {
   }
 }
 
-const inputSchema = {
+const eventSchema = {
   type: 'object',
   properties: {
     body: {
@@ -73,7 +75,8 @@ const handler = middy(processPayment)
     ],
     defaultContentType: 'application/json'
   }))
-  .use(validator({ inputSchema }))
+  .use(validator({ eventSchema: transpileSchema(eventSchema) }))
+  .use(cors())
   .use(httpErrorHandler());
 
 export { handler };
